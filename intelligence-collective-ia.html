@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intelligence collective assistée en éducation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===== RETRO BASE ===== */
+    :root {
+      --retro-teal: #127676;
+      --retro-orange: #E4632E;
+      --retro-jaune: #E3A535;
+      --retro-ink: #0D1617;
+      --retro-paper: #F2EFE6;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--retro-ink) url('background.jpg') center center / cover fixed;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--retro-ink);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--retro-teal);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      border-bottom: 3px solid var(--retro-orange);
+      min-height: 56px;
+    }
+
+    .nav-brand {
+      font-family: 'Anton', sans-serif;
+      color: var(--retro-paper);
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-right: auto;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+    }
+
+    nav a {
+      color: var(--retro-paper);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0 1.25rem;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      transition: background 0.15s, color 0.15s;
+      height: 56px;
+    }
+
+    nav a:hover {
+      background: var(--retro-jaune);
+      color: var(--retro-ink);
+    }
+
+    /* ===== LANG TOGGLE ===== */
+    .lang-btn {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      border: 2px solid rgba(242, 239, 230, 0.55);
+      color: var(--retro-paper);
+      padding: 0.28rem 0.85rem;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 1.25rem;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+    }
+
+    .lang-btn:hover {
+      background: var(--retro-jaune);
+      border-color: var(--retro-jaune);
+      color: var(--retro-ink);
+    }
+
+    /* ===== PAGE FRAME ===== */
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 40px 48px 60px;
+    }
+
+    .page-frame {
+      background: var(--retro-paper);
+      border: 4px solid var(--retro-orange);
+      width: 100%;
+      max-width: 900px;
+      padding: 64px 72px 60px;
+      position: relative;
+      text-align: center;
+    }
+
+    /* ===== CORNER ORNAMENTS ===== */
+    .corner {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .corner-tl {
+      top: 10px;
+      left: 10px;
+    }
+
+    .corner-tr {
+      top: 10px;
+      right: 10px;
+      transform: scaleX(-1);
+    }
+
+    .corner-bl {
+      bottom: 10px;
+      left: 10px;
+      transform: scaleY(-1);
+    }
+
+    .corner-br {
+      bottom: 10px;
+      right: 10px;
+      transform: scale(-1, -1);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 48px 0 52px;
+      border-bottom: 2px solid var(--retro-teal);
+      margin-bottom: 72px;
+    }
+
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--retro-teal);
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero .subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--retro-orange);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      margin-bottom: 80px;
+      scroll-margin-top: 72px;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--retro-teal);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--retro-teal) 0%, transparent 100%);
+    }
+
+    .subsection-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--retro-orange);
+      margin: 2.5rem 0 1rem;
+    }
+
+    p {
+      line-height: 1.8;
+      color: var(--retro-ink);
+      margin-bottom: 1.1rem;
+      max-width: 76ch;
+      text-align: left;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    sup {
+      font-size: 0.7em;
+      vertical-align: super;
+    }
+
+    blockquote {
+      background: rgba(18, 118, 118, 0.07);
+      border-left: 4px solid var(--retro-teal);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: rgba(13, 22, 23, 0.8);
+      max-width: 76ch;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    blockquote strong {
+      font-style: normal;
+      color: var(--retro-teal);
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    code {
+      font-family: 'Inter', monospace;
+      font-size: 0.88em;
+      background: rgba(18, 118, 118, 0.12);
+      color: var(--retro-teal);
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* ===== SEPARATOR ===== */
+    .retro-separator {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 56px 0;
+      color: var(--retro-teal);
+      font-size: 1.4rem;
+    }
+
+    .retro-separator::before,
+    .retro-separator::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--retro-teal) 25%, var(--retro-teal) 75%, transparent);
+    }
+
+    /* ===== MODE D'EMPLOI ===== */
+    .mode-emploi {
+      background: rgba(18, 118, 118, 0.07);
+      border: 2px solid var(--retro-teal);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .mode-emploi p {
+      margin: 0;
+      max-width: none;
+      font-size: 0.95rem;
+    }
+
+    /* ===== GLOBAL CONTEXT ZONE ===== */
+    .context-zone {
+      background: var(--retro-ink);
+      border: 3px solid var(--retro-orange);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .context-zone-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .context-label {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--retro-jaune);
+      font-size: 1rem;
+    }
+
+    .context-badge {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--retro-ink);
+      background: var(--retro-orange);
+      padding: 0.15rem 0.6rem;
+      border-radius: 50px;
+    }
+
+    .context-instructions {
+      color: rgba(242, 239, 230, 0.65);
+      font-size: 0.88rem;
+      margin-bottom: 1.1rem;
+      line-height: 1.65;
+    }
+
+    .context-instructions strong {
+      color: var(--retro-jaune);
+      font-weight: 600;
+    }
+
+    .context-instructions em {
+      color: rgba(242, 239, 230, 0.5);
+    }
+
+    .context-zone textarea {
+      width: 100%;
+      background: rgba(242, 239, 230, 0.06);
+      border: 2px solid rgba(242, 239, 230, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      color: var(--retro-paper);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      resize: vertical;
+      min-height: 110px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .context-zone textarea:focus {
+      outline: none;
+      border-color: var(--retro-jaune);
+      background: rgba(242, 239, 230, 0.09);
+    }
+
+    .context-zone textarea::placeholder {
+      color: rgba(242, 239, 230, 0.28);
+    }
+
+    .context-status {
+      margin-top: 0.75rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(242, 239, 230, 0.35);
+      transition: color 0.3s;
+    }
+
+    .context-status.active {
+      color: var(--retro-teal);
+    }
+
+    /* ===== ACCORDION ===== */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .accordion-item {
+      border: 3px solid var(--retro-teal);
+      border-radius: 24px 8px 24px 8px;
+      overflow: hidden;
+      background: var(--retro-paper);
+      box-shadow: inset 0 0 0 2px var(--retro-orange);
+      transition: box-shadow 0.2s;
+    }
+
+    .accordion-item.open {
+      box-shadow: inset 0 0 0 2px var(--retro-orange), 0 4px 20px rgba(18, 118, 118, 0.15);
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      cursor: pointer;
+      background: var(--retro-paper);
+      transition: background 0.2s;
+      user-select: none;
+    }
+
+    .accordion-header:hover {
+      background: rgba(18, 118, 118, 0.07);
+    }
+
+    .accordion-item.open .accordion-header {
+      background: var(--retro-teal);
+    }
+
+    .acc-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.6rem;
+      color: var(--retro-orange);
+      min-width: 2.5rem;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .accordion-item.open .acc-num {
+      color: var(--retro-jaune);
+    }
+
+    .acc-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--retro-ink);
+      flex: 1;
+      transition: color 0.2s;
+    }
+
+    .accordion-item.open .acc-title {
+      color: var(--retro-paper);
+    }
+
+    .acc-chevron {
+      color: var(--retro-orange);
+      transition: transform 0.3s, color 0.2s;
+      font-size: 0.85rem;
+    }
+
+    .accordion-item.open .acc-chevron {
+      transform: rotate(180deg);
+      color: var(--retro-jaune);
+    }
+
+    .accordion-body {
+      display: none;
+      padding: 1.75rem 1.75rem 1.5rem;
+      border-top: 2px solid var(--retro-teal);
+    }
+
+    .accordion-item.open .accordion-body {
+      display: block;
+    }
+
+    /* ===== TECHNIQUE BADGE ===== */
+    .technique-tag {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--retro-paper);
+      background: var(--retro-teal);
+      padding: 0.22rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .technique-desc {
+      font-size: 0.94rem;
+      line-height: 1.78;
+      color: var(--retro-ink);
+      margin-bottom: 2rem;
+      max-width: 74ch;
+    }
+
+    /* ===== PROMPT BLOCK ===== */
+    .prompt-label {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--retro-orange);
+      font-size: 0.82rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .prompt-block {
+      background: var(--retro-ink);
+      border: 2px solid rgba(18, 118, 118, 0.35);
+      border-radius: 12px;
+      padding: 1.4rem 1.5rem;
+      color: var(--retro-paper);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.78;
+      white-space: pre-wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .context-highlight {
+      color: var(--retro-jaune);
+      font-weight: 600;
+      background: rgba(227, 165, 53, 0.15);
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+
+    /* ===== COPY BUTTON ===== */
+    .copy-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .retro-btn-pill {
+      display: inline-flex;
+      border-radius: 50px;
+      border: 3px solid var(--retro-teal);
+      overflow: hidden;
+      cursor: pointer;
+      background: none;
+      padding: 0;
+      transition: transform 0.1s, box-shadow 0.15s;
+    }
+
+    .retro-btn-pill:hover {
+      box-shadow: 0 2px 12px rgba(18, 118, 118, 0.25);
+    }
+
+    .retro-btn-pill:active {
+      transform: scale(0.97);
+    }
+
+    .retro-btn-pill .label {
+      background: var(--retro-jaune);
+      color: var(--retro-ink);
+      padding: 0.6rem 1.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+    }
+
+    .retro-btn-pill .icon {
+      background: var(--retro-orange);
+      color: var(--retro-paper);
+      width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .copy-feedback {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--retro-teal);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .copy-feedback.visible {
+      opacity: 1;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 40px 0 16px;
+      border-top: 2px solid var(--retro-teal);
+      margin-top: 60px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(13, 22, 23, 0.45);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 840px) {
+      .page-wrapper {
+        padding: 16px;
+      }
+
+      .page-frame {
+        padding: 40px 28px 48px;
+      }
+
+      nav {
+        padding: 0 20px;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+
+      .nav-brand {
+        padding: 10px 0;
+        font-size: 0.75rem;
+      }
+
+      nav a {
+        padding: 0 0.75rem;
+        font-size: 0.76rem;
+        height: 44px;
+      }
+
+      .lang-btn {
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
+        padding: 0.22rem 0.65rem;
+      }
+
+      .hero {
+        padding: 32px 0 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <span class="nav-brand" data-i18n="nav-brand">IC &amp; IA — Éducation</span>
+    <div class="nav-links">
+      <a href="#intro" data-i18n="nav-link-intro">L'intelligence collective</a>
+      <a href="#ic-ia" data-i18n="nav-link-ic-ia">IC assistée par IA</a>
+      <a href="#prompts" data-i18n="nav-link-prompts">Les 7 prompts</a>
+    </div>
+    <button id="lang-toggle" class="lang-btn" onclick="toggleLang()" aria-label="Switch language">EN</button>
+  </nav>
+
+  <!-- ===== PAGE FRAME ===== -->
+  <div class="page-wrapper">
+    <div class="page-frame">
+
+      <!-- Corner ornaments -->
+      <svg class="corner corner-tl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
+        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
+          stroke="#127676" stroke-width="1.5" />
+        <circle cx="8" cy="8" r="3" fill="#127676" />
+        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
+      </svg>
+      <svg class="corner corner-tr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
+        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
+          stroke="#127676" stroke-width="1.5" />
+        <circle cx="8" cy="8" r="3" fill="#127676" />
+        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
+      </svg>
+      <svg class="corner corner-bl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
+        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
+          stroke="#127676" stroke-width="1.5" />
+        <circle cx="8" cy="8" r="3" fill="#127676" />
+        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
+      </svg>
+      <svg class="corner corner-br" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
+        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
+          stroke="#127676" stroke-width="1.5" />
+        <circle cx="8" cy="8" r="3" fill="#127676" />
+        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
+      </svg>
+
+      <!-- ===== HERO ===== -->
+      <header class="hero">
+        <h1 data-i18n="hero-h1">Intelligence collective<br>assistée en éducation</h1>
+        <p class="subtitle" data-i18n="hero-subtitle">7 prompts divergents pour la conception pédagogique</p>
+      </header>
+
+      <!-- ===== SECTION 1 ===== -->
+      <section id="intro">
+        <h2 class="section-title" data-i18n="s1-title">1. L'intelligence collective : penser ensemble autrement</h2>
+
+        <p data-i18n="s1-p1">L'intelligence collective désigne la capacité d'un groupe à résoudre des problèmes, produire des idées ou
+          prendre des décisions qu'aucun de ses membres n'aurait pu atteindre seul. Ce n'est pas la somme des
+          intelligences individuelles — c'est une propriété émergente de l'interaction elle-même.</p>
+
+        <p data-i18n="s1-p2">Les travaux d'Anita Woolley et de son équipe au MIT (2010) ont montré l'existence d'un « facteur C » : un
+          indicateur de performance collective qui ne dépend ni du QI moyen du groupe, ni de la présence d'un membre
+          particulièrement brillant. Ce facteur est corrélé à trois éléments : l'équité dans la distribution de la
+          parole, la sensibilité sociale des participants (leur capacité à lire les états émotionnels des autres), et la
+          diversité des profils. Autrement dit, un groupe « intelligent » n'est pas un groupe de gens intelligents —
+          c'est un groupe qui sait s'écouter.</p>
+
+        <p data-i18n="s1-p3">Pierre Lévy, dès 1994 dans <em>L'intelligence collective : pour une anthropologie du cyberespace</em>, posait
+          les bases d'une vision plus ambitieuse : chacun sait quelque chose, personne ne sait tout, et le savoir
+          pertinent se distribue dans l'ensemble de l'humanité. L'enjeu n'est pas de centraliser l'expertise mais de
+          créer les conditions pour que les savoirs circulent, se confrontent et se recomposent.</p>
+
+        <p data-i18n="s1-p4">Dans le champ éducatif, cette idée a été mise en pratique depuis longtemps — souvent sans le nom.
+          L'arpentage, issu de l'éducation populaire ouvrière du XIX<sup>e</sup> siècle, est une forme d'intelligence
+          collective appliquée à la lecture. Le codéveloppement professionnel de Payette et Champagne (1997) repose sur
+          le même principe : c'est le groupe qui aide l'individu à voir ce qu'il ne voit pas seul. Les Six Chapeaux de
+          De Bono (1985) structurent la pensée collective en forçant l'adoption successive de postures cognitives
+          distinctes.</p>
+
+        <blockquote data-i18n="s1-blockquote">
+          <strong>Pour aller plus loin :</strong> Woolley, A. W. et al. (2010). « Evidence for a Collective Intelligence
+          Factor in the Performance of Human Groups ». <em>Science</em>, 330(6004). — Lévy, P. (1994).
+          <em>L'intelligence collective</em>. La Découverte. — Surowiecki, J. (2004). <em>The Wisdom of Crowds</em>.
+          Anchor Books.
+        </blockquote>
+      </section>
+
+      <div class="retro-separator">❧</div>
+
+      <!-- ===== SECTION 2 ===== -->
+      <section id="ic-ia">
+        <h2 class="section-title" data-i18n="s2-title">2. L'intelligence collective assistée par IA en éducation</h2>
+
+        <h3 class="subsection-title" data-i18n="s2-h3-1">Pourquoi introduire l'IA générative dans les processus d'IC ?</h3>
+
+        <p data-i18n="s2-p1">Les procédés d'intelligence collective supposent la présence d'un groupe. Dans une phase de conception
+          pédagogique, cette
+          condition est, malheureusement, souvent impossible à satisfaire. Un enseignant qui conçoit seul une séquence à
+          22h un dimanche soir n'a
+          pas de groupe de codéveloppement sous la main. L'IA générative ne remplace pas le groupe — elle en simule
+          certaines fonctions cognitives : la multiplication des perspectives, la contradiction structurée, le
+          questionnement systématique.</p>
+
+        <p data-i18n="s2-p2">L'objectif n'est pas de produire des séquences pédagogiques « clé en main ». C'est de créer, pour un
+          concepteur pédagogique isolé, un espace de pensée divergente qu'il ne pourrait pas se procurer seul. Là où un
+          brainstorming solitaire tourne vite en rond (on reste prisonnier de ses propres cadres de référence), un
+          prompt bien conçu peut forcer la collision entre perspectives incompatibles — exactement ce que font les bons
+          procédés d'IC en présentiel.</p>
+
+        <p data-i18n="s2-p3">Le but n'est donc pas de faire formuler des réponses toutes faites générées par l'IA ! Cela mènerait à encore
+          plus d'uniformisation de la pensée. Le but est d'aider la réflexion individuelle par la multiplication des
+          points de vue. Chacun entrera en résonance avec des aspects différents selon là où il en est.</p>
+
+        <p data-i18n="s2-p4">C'est utile quand on est seul mais je pense qu'il serait aussi très intéressant d'explorer des procédés
+          similaires où l'IA serait une voix parmi d'autres dans un groupe pratiquant l'intelligence collective (Et
+          formé à ce qu'est l'IA et à comment l'utiliser, bien sûr!)</p>
+
+        <h3 class="subsection-title" data-i18n="s2-h3-2">Comment ces prompts ont été construits</h3>
+
+        <p data-i18n="s2-p5">Le point de départ est un inventaire de procédés d'intelligence collective documentés dans la littérature
+          (facilitation, coopération, cartographie des savoirs, évaluation entre pairs). Pour chaque procédé, la
+          question posée était : quel est le mécanisme cognitif central de cette technique — celui qui produit la pensée
+          divergente — et comment le transposer dans une interaction avec une IA générative ?</p>
+
+        <p data-i18n="s2-p6">La transposition n'est pas littérale. Un prompt « Six Chapeaux » ne demande pas simplement à l'IA de lister
+          six points de vue. Il met en scène un débat entre six voix qui se contredisent, s'interpellent, révèlent des
+          tensions — parce que c'est la friction entre les chapeaux qui crée la valeur du procédé original, pas le fait
+          d'avoir six catégories.</p>
+
+        <p data-i18n="s2-p7">Chaque prompt a été conçu pour ne pas donner de solution. Il pose des questions, révèle des tensions,
+          cartographie des angles morts. L'enseignant reste le décideur — le prompt l'aide à décider en connaissance de
+          cause.</p>
+
+        <p data-i18n="s2-p8">Les 7 prompts retenus partagent un même mécanisme : ils forcent une collision entre perspectives
+          incompatibles ou un dialogue adversarial sur les choix du concepteur. Leur but est de rendre visible ce qu'un
+          design pédagogique présuppose, exclut ou n'a pas encore regardé en face.</p>
+
+        <blockquote data-i18n="s2-blockquote">
+          <strong>Pour aller plus loin :</strong> Malone, T. W. (2018). <em>Superminds: The Surprising Power of People
+            and Computers Thinking Together</em>. Little, Brown.
+        </blockquote>
+      </section>
+
+      <div class="retro-separator">✿</div>
+
+      <!-- ===== SECTION 3 ===== -->
+      <section id="prompts">
+        <h2 class="section-title" data-i18n="s3-title">3. Les 7 prompts divergents</h2>
+
+        <div class="mode-emploi">
+          <p data-i18n="mode-emploi-p"><strong>Mode d'emploi.</strong> Remplace <code>[TON CONTEXTE]</code> (ci-dessous) par l'un de ces trois
+            types d'entrée :
+            une séquence ou activité existante (décris-la ou colle-la directement), une idée de séquence (même floue),
+            ou un thème à enseigner. Ces prompts ne donnent pas de solution — ils montrent ce que tu n'avais pas vu.</p>
+        </div>
+
+        <!-- GLOBAL CONTEXT FIELD -->
+        <div class="context-zone">
+          <div class="context-zone-header">
+            <span class="context-label" data-i18n="ctx-label">Ton contexte pédagogique</span>
+            <span class="context-badge" data-i18n="ctx-badge">Champ global</span>
+          </div>
+          <p class="context-instructions" data-i18n="ctx-instructions">
+            Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner.<br>
+            Ce texte remplacera automatiquement <strong>[TON CONTEXTE]</strong> dans les 7 prompts ci-dessous, en temps
+            réel.<br>
+            Tu peux ensuite ouvrir n'importe quel prompt et copier la version personnalisée pour la coller dans ton
+            outil IA.<br>
+            Exemple : <em>« Une séquence de 2h sur la photosynthèse pour des élèves de 3<sup>e</sup>, avec un exposé
+              puis un quiz »</em>
+          </p>
+          <textarea id="globalContext"
+            placeholder="Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner…"
+            aria-label="Contexte pédagogique global"></textarea>
+          <p class="context-status" id="contextStatus">En attente de ton contexte — [TON CONTEXTE] sera remplacé dans
+            les prompts</p>
+        </div>
+
+        <!-- ACCORDION -->
+        <div class="accordion" id="accordion">
+
+          <!-- 3.1 Six Chapeaux -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">01</span>
+              <span class="acc-title" data-i18n="acc1-title">Six Chapeaux de De Bono</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc1-desc">Développée par Edward de Bono en 1985, la méthode des Six Chapeaux structure la
+                réflexion collective en attribuant à chaque participant une posture cognitive distincte, symbolisée par
+                une couleur : le blanc (faits et données), le rouge (émotions et intuitions), le noir (risques et
+                limites), le jaune (opportunités et bénéfices), le vert (créativité et alternatives), le bleu (pilotage
+                du processus). Les participants portent tous le même chapeau en même temps, puis changent — ce qui évite
+                que les arguments s'entrechoquent sans structure. La force du procédé tient à la séparation volontaire
+                des registres de pensée : on pense « en noir » avant de penser « en jaune », ce qui empêche l'optimisme
+                de neutraliser la critique (et inversement).</p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-1"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(1, this)" aria-label="Copier le prompt Six Chapeaux">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.2 Design Thinking -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">02</span>
+              <span class="acc-title" data-i18n="acc2-title">Design Thinking</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc2-desc">Importée du design industriel vers l'éducation, la démarche de Design Thinking
+                procède en phases : empathie (comprendre les besoins réels des utilisateurs, ici les apprenants),
+                définition du problème, idéation (génération d'alternatives), prototypage et test. Son apport central
+                est le recentrage sur l'expérience vécue par l'apprenant plutôt que sur la logique disciplinaire de
+                l'enseignant. La phase d'empathie, souvent négligée dans la conception pédagogique classique, oblige à
+                considérer que ce que l'apprenant vit ne correspond pas nécessairement à ce que l'enseignant a prévu.
+              </p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-2"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(2, this)"
+                  aria-label="Copier le prompt Design Thinking">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.3 Codéveloppement -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">03</span>
+              <span class="acc-title" data-i18n="acc3-title">Codéveloppement professionnel</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc3-desc">Formalisé par Adrien Payette et Claude Champagne (1997), le codéveloppement
+                réunit un petit groupe de pairs (4 à 8) autour d'une situation professionnelle réelle. Un participant
+                (le « client ») expose sa problématique. Les autres (les « consultants ») suivent un protocole strict en
+                six étapes : exposé, clarification, contrat, consultation, synthèse, évaluation. La phase de
+                clarification est la plus puissante : les consultants ne peuvent que poser des questions — pas de
+                conseils, pas de solutions. Ce sont les questions qui font le travail, en révélant ce que le client ne
+                voyait pas dans sa propre situation.</p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-3"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(3, this)"
+                  aria-label="Copier le prompt Codéveloppement">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.4 Cartographie d'arguments -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">04</span>
+              <span class="acc-title" data-i18n="acc4-title">Cartographie d'arguments</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc4-desc">La cartographie d'arguments (Argument Mapping) est une méthode de représentation
+                visuelle d'un raisonnement : on décompose une position en prémisses, conclusions et contre-arguments,
+                disposés en arborescence. Issue des travaux de John Warfield sur les problèmes complexes et développée
+                dans le champ de la pensée critique (notamment par Tim van Gelder à l'Université de Melbourne), elle
+                rend explicite la structure logique d'un débat. Sa vertu principale : elle empêche de confondre
+                l'impression d'avoir raison avec le fait d'avoir un argument solide.</p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-4"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(4, this)"
+                  aria-label="Copier le prompt Cartographie d'arguments">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.5 Intelligence critique -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">05</span>
+              <span class="acc-title" data-i18n="acc5-title">Intelligence critique et curation</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc5-desc">L'intelligence critique appliquée à l'éducation consiste à examiner
+                systématiquement les présupposés, les preuves et les limites des affirmations pédagogiques — y compris
+                celles qu'on tient soi-même pour évidentes. Elle s'appuie sur le fact-checking, la diversification des
+                sources et l'examen contradictoire. Dans un contexte de surinformation, cette posture est d'autant plus
+                nécessaire que les « idées reçues pédagogiques » circulent avec la force des évidences : les styles
+                d'apprentissage, la pyramide de Dale, le « on retient 10% de ce qu'on lit » — autant de croyances
+                persistantes que la recherche a fortement nuancées ou invalidées.</p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-5"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(5, this)"
+                  aria-label="Copier le prompt Intelligence critique">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.6 QQOQPC -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">06</span>
+              <span class="acc-title" data-i18n="acc6-title">QQOQPC</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc6-desc">Le QQOQPC (Qui, Quoi, Où, Quand, Pourquoi, Comment) est une grille d'analyse
+                systématique utilisée pour cerner les contours d'un problème avant de chercher des solutions. Son
+                efficacité vient de son exhaustivité mécanique : en forçant le passage par chaque question, elle empêche
+                de sauter directement aux conclusions. En contexte pédagogique, elle est souvent employée pour clarifier
+                un brief de formation ou analyser une situation d'apprentissage complexe. Sa limite habituelle :
+                appliquée depuis un seul point de vue, elle ne produit qu'une seule lecture du problème.</p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-6"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(6, this)" aria-label="Copier le prompt QQOQPC">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.7 Arbres de Connaissances -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
+              <span class="acc-num">07</span>
+              <span class="acc-title" data-i18n="acc7-title">Arbres de Connaissances</span>
+              <span class="acc-chevron">▼</span>
+            </div>
+            <div class="accordion-body">
+              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+              <p class="technique-desc" data-i18n="acc7-desc">Théorisés par Michel Authier et Pierre Lévy (1992), les Arbres de Connaissances
+                sont un système de cartographie dynamique et non hiérarchique des savoirs d'une communauté. Chaque
+                individu possède un « blason » (la mosaïque de ses compétences validées sous forme de « brevets »), et
+                l'arbre collectif visualise la distribution des savoirs du groupe : tronc commun, branches spécialisées,
+                compétences rares. L'idée fondatrice est que tout savoir a de la valeur — y compris ceux que
+                l'institution ne reconnaît pas — et que rendre visible la carte des savoirs d'un groupe transforme la
+                façon dont ce groupe apprend et s'organise.</p>
+              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+              <div class="prompt-block" id="pt-7"></div>
+              <div class="copy-row">
+                <button class="retro-btn-pill" onclick="copyPrompt(7, this)"
+                  aria-label="Copier le prompt Arbres de Connaissances">
+                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
+                  <span class="icon">⧉</span>
+                </button>
+                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /accordion -->
+      </section>
+
+      <footer>
+        <p data-i18n="footer-text">Document produit dans le cadre de l'atelier « Prompt créatif et intelligence collective » — avril 2026.</p>
+      </footer>
+
+    </div><!-- /page-frame -->
+  </div><!-- /page-wrapper -->
+
+  <script>
+    // ===== LANGUAGE STATE =====
+    let currentLang = 'fr';
+
+    const PLACEHOLDERS = {
+      fr: '[TON CONTEXTE]',
+      en: '[YOUR CONTEXT]'
+    };
+
+    // ===== TRANSLATIONS =====
+    const T = {
+      fr: {
+        'nav-brand': 'IC &amp; IA — Éducation',
+        'nav-link-intro': "L'intelligence collective",
+        'nav-link-ic-ia': 'IC assistée par IA',
+        'nav-link-prompts': 'Les 7 prompts',
+        'hero-h1': 'Intelligence collective<br>assistée en éducation',
+        'hero-subtitle': '7 prompts divergents pour la conception pédagogique',
+        's1-title': '1. L\'intelligence collective : penser ensemble autrement',
+        's1-p1': 'L\'intelligence collective désigne la capacité d\'un groupe à résoudre des problèmes, produire des idées ou prendre des décisions qu\'aucun de ses membres n\'aurait pu atteindre seul. Ce n\'est pas la somme des intelligences individuelles — c\'est une propriété émergente de l\'interaction elle-même.',
+        's1-p2': 'Les travaux d\'Anita Woolley et de son équipe au MIT (2010) ont montré l\'existence d\'un « facteur C » : un indicateur de performance collective qui ne dépend ni du QI moyen du groupe, ni de la présence d\'un membre particulièrement brillant. Ce facteur est corrélé à trois éléments : l\'équité dans la distribution de la parole, la sensibilité sociale des participants (leur capacité à lire les états émotionnels des autres), et la diversité des profils. Autrement dit, un groupe « intelligent » n\'est pas un groupe de gens intelligents — c\'est un groupe qui sait s\'écouter.',
+        's1-p3': 'Pierre Lévy, dès 1994 dans <em>L\'intelligence collective : pour une anthropologie du cyberespace</em>, posait les bases d\'une vision plus ambitieuse : chacun sait quelque chose, personne ne sait tout, et le savoir pertinent se distribue dans l\'ensemble de l\'humanité. L\'enjeu n\'est pas de centraliser l\'expertise mais de créer les conditions pour que les savoirs circulent, se confrontent et se recomposent.',
+        's1-p4': 'Dans le champ éducatif, cette idée a été mise en pratique depuis longtemps — souvent sans le nom. L\'arpentage, issu de l\'éducation populaire ouvrière du XIX<sup>e</sup> siècle, est une forme d\'intelligence collective appliquée à la lecture. Le codéveloppement professionnel de Payette et Champagne (1997) repose sur le même principe : c\'est le groupe qui aide l\'individu à voir ce qu\'il ne voit pas seul. Les Six Chapeaux de De Bono (1985) structurent la pensée collective en forçant l\'adoption successive de postures cognitives distinctes.',
+        's1-blockquote': '<strong>Pour aller plus loin :</strong> Woolley, A. W. et al. (2010). « Evidence for a Collective Intelligence Factor in the Performance of Human Groups ». <em>Science</em>, 330(6004). — Lévy, P. (1994). <em>L\'intelligence collective</em>. La Découverte. — Surowiecki, J. (2004). <em>The Wisdom of Crowds</em>. Anchor Books.',
+        's2-title': '2. L\'intelligence collective assistée par IA en éducation',
+        's2-h3-1': 'Pourquoi introduire l\'IA générative dans les processus d\'IC ?',
+        's2-p1': 'Les procédés d\'intelligence collective supposent la présence d\'un groupe. Dans une phase de conception pédagogique, cette condition est, malheureusement, souvent impossible à satisfaire. Un enseignant qui conçoit seul une séquence à 22h un dimanche soir n\'a pas de groupe de codéveloppement sous la main. L\'IA générative ne remplace pas le groupe — elle en simule certaines fonctions cognitives : la multiplication des perspectives, la contradiction structurée, le questionnement systématique.',
+        's2-p2': 'L\'objectif n\'est pas de produire des séquences pédagogiques « clé en main ». C\'est de créer, pour un concepteur pédagogique isolé, un espace de pensée divergente qu\'il ne pourrait pas se procurer seul. Là où un brainstorming solitaire tourne vite en rond (on reste prisonnier de ses propres cadres de référence), un prompt bien conçu peut forcer la collision entre perspectives incompatibles — exactement ce que font les bons procédés d\'IC en présentiel.',
+        's2-p3': 'Le but n\'est donc pas de faire formuler des réponses toutes faites générées par l\'IA ! Cela mènerait à encore plus d\'uniformisation de la pensée. Le but est d\'aider la réflexion individuelle par la multiplication des points de vue. Chacun entrera en résonance avec des aspects différents selon là où il en est.',
+        's2-p4': 'C\'est utile quand on est seul mais je pense qu\'il serait aussi très intéressant d\'explorer des procédés similaires où l\'IA serait une voix parmi d\'autres dans un groupe pratiquant l\'intelligence collective (Et formé à ce qu\'est l\'IA et à comment l\'utiliser, bien sûr!)',
+        's2-h3-2': 'Comment ces prompts ont été construits',
+        's2-p5': 'Le point de départ est un inventaire de procédés d\'intelligence collective documentés dans la littérature (facilitation, coopération, cartographie des savoirs, évaluation entre pairs). Pour chaque procédé, la question posée était : quel est le mécanisme cognitif central de cette technique — celui qui produit la pensée divergente — et comment le transposer dans une interaction avec une IA générative ?',
+        's2-p6': 'La transposition n\'est pas littérale. Un prompt « Six Chapeaux » ne demande pas simplement à l\'IA de lister six points de vue. Il met en scène un débat entre six voix qui se contredisent, s\'interpellent, révèlent des tensions — parce que c\'est la friction entre les chapeaux qui crée la valeur du procédé original, pas le fait d\'avoir six catégories.',
+        's2-p7': 'Chaque prompt a été conçu pour ne pas donner de solution. Il pose des questions, révèle des tensions, cartographie des angles morts. L\'enseignant reste le décideur — le prompt l\'aide à décider en connaissance de cause.',
+        's2-p8': 'Les 7 prompts retenus partagent un même mécanisme : ils forcent une collision entre perspectives incompatibles ou un dialogue adversarial sur les choix du concepteur. Leur but est de rendre visible ce qu\'un design pédagogique présuppose, exclut ou n\'a pas encore regardé en face.',
+        's2-blockquote': '<strong>Pour aller plus loin :</strong> Malone, T. W. (2018). <em>Superminds: The Surprising Power of People and Computers Thinking Together</em>. Little, Brown.',
+        's3-title': '3. Les 7 prompts divergents',
+        'mode-emploi-p': '<strong>Mode d\'emploi.</strong> Remplace <code>[TON CONTEXTE]</code> (ci-dessous) par l\'un de ces trois types d\'entrée : une séquence ou activité existante (décris-la ou colle-la directement), une idée de séquence (même floue), ou un thème à enseigner. Ces prompts ne donnent pas de solution — ils montrent ce que tu n\'avais pas vu.',
+        'ctx-label': 'Ton contexte pédagogique',
+        'ctx-badge': 'Champ global',
+        'ctx-instructions': 'Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner.<br>Ce texte remplacera automatiquement <strong>[TON CONTEXTE]</strong> dans les 7 prompts ci-dessous, en temps réel.<br>Tu peux ensuite ouvrir n\'importe quel prompt et copier la version personnalisée pour la coller dans ton outil IA.<br>Exemple : <em>« Une séquence de 2h sur la photosynthèse pour des élèves de 3<sup>e</sup>, avec un exposé puis un quiz »</em>',
+        'ctx-placeholder': 'Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner…',
+        'ctx-status-waiting': 'En attente de ton contexte — [TON CONTEXTE] sera remplacé dans les prompts',
+        'ctx-status-active': '✓ Contexte saisi — les prompts sont personnalisés',
+        'technique-tag': 'La technique classique',
+        'acc1-title': 'Six Chapeaux de De Bono',
+        'acc1-desc': 'Développée par Edward de Bono en 1985, la méthode des Six Chapeaux structure la réflexion collective en attribuant à chaque participant une posture cognitive distincte, symbolisée par une couleur : le blanc (faits et données), le rouge (émotions et intuitions), le noir (risques et limites), le jaune (opportunités et bénéfices), le vert (créativité et alternatives), le bleu (pilotage du processus). Les participants portent tous le même chapeau en même temps, puis changent — ce qui évite que les arguments s\'entrechoquent sans structure. La force du procédé tient à la séparation volontaire des registres de pensée : on pense « en noir » avant de penser « en jaune », ce qui empêche l\'optimisme de neutraliser la critique (et inversement).',
+        'acc2-title': 'Design Thinking',
+        'acc2-desc': 'Importée du design industriel vers l\'éducation, la démarche de Design Thinking procède en phases : empathie (comprendre les besoins réels des utilisateurs, ici les apprenants), définition du problème, idéation (génération d\'alternatives), prototypage et test. Son apport central est le recentrage sur l\'expérience vécue par l\'apprenant plutôt que sur la logique disciplinaire de l\'enseignant. La phase d\'empathie, souvent négligée dans la conception pédagogique classique, oblige à considérer que ce que l\'apprenant vit ne correspond pas nécessairement à ce que l\'enseignant a prévu.',
+        'acc3-title': 'Codéveloppement professionnel',
+        'acc3-desc': 'Formalisé par Adrien Payette et Claude Champagne (1997), le codéveloppement réunit un petit groupe de pairs (4 à 8) autour d\'une situation professionnelle réelle. Un participant (le « client ») expose sa problématique. Les autres (les « consultants ») suivent un protocole strict en six étapes : exposé, clarification, contrat, consultation, synthèse, évaluation. La phase de clarification est la plus puissante : les consultants ne peuvent que poser des questions — pas de conseils, pas de solutions. Ce sont les questions qui font le travail, en révélant ce que le client ne voyait pas dans sa propre situation.',
+        'acc4-title': "Cartographie d'arguments",
+        'acc4-desc': "La cartographie d'arguments (Argument Mapping) est une méthode de représentation visuelle d'un raisonnement : on décompose une position en prémisses, conclusions et contre-arguments, disposés en arborescence. Issue des travaux de John Warfield sur les problèmes complexes et développée dans le champ de la pensée critique (notamment par Tim van Gelder à l'Université de Melbourne), elle rend explicite la structure logique d'un débat. Sa vertu principale : elle empêche de confondre l'impression d'avoir raison avec le fait d'avoir un argument solide.",
+        'acc5-title': 'Intelligence critique et curation',
+        'acc5-desc': 'L\'intelligence critique appliquée à l\'éducation consiste à examiner systématiquement les présupposés, les preuves et les limites des affirmations pédagogiques — y compris celles qu\'on tient soi-même pour évidentes. Elle s\'appuie sur le fact-checking, la diversification des sources et l\'examen contradictoire. Dans un contexte de surinformation, cette posture est d\'autant plus nécessaire que les « idées reçues pédagogiques » circulent avec la force des évidences : les styles d\'apprentissage, la pyramide de Dale, le « on retient 10% de ce qu\'on lit » — autant de croyances persistantes que la recherche a fortement nuancées ou invalidées.',
+        'acc6-title': 'QQOQPC',
+        'acc6-desc': 'Le QQOQPC (Qui, Quoi, Où, Quand, Pourquoi, Comment) est une grille d\'analyse systématique utilisée pour cerner les contours d\'un problème avant de chercher des solutions. Son efficacité vient de son exhaustivité mécanique : en forçant le passage par chaque question, elle empêche de sauter directement aux conclusions. En contexte pédagogique, elle est souvent employée pour clarifier un brief de formation ou analyser une situation d\'apprentissage complexe. Sa limite habituelle : appliquée depuis un seul point de vue, elle ne produit qu\'une seule lecture du problème.',
+        'acc7-title': 'Arbres de Connaissances',
+        'acc7-desc': 'Théorisés par Michel Authier et Pierre Lévy (1992), les Arbres de Connaissances sont un système de cartographie dynamique et non hiérarchique des savoirs d\'une communauté. Chaque individu possède un « blason » (la mosaïque de ses compétences validées sous forme de « brevets »), et l\'arbre collectif visualise la distribution des savoirs du groupe : tronc commun, branches spécialisées, compétences rares. L\'idée fondatrice est que tout savoir a de la valeur — y compris ceux que l\'institution ne reconnaît pas — et que rendre visible la carte des savoirs d\'un groupe transforme la façon dont ce groupe apprend et s\'organise.',
+        'prompt-label': '▶ Le prompt divergent',
+        'copy-btn': 'Copier le prompt',
+        'copy-feedback': 'Copié ✓',
+        'footer-text': 'Document produit dans le cadre de l\'atelier « Prompt créatif et intelligence collective » — avril 2026.'
+      },
+      en: {
+        'nav-brand': 'CI &amp; AI — Education',
+        'nav-link-intro': 'Collective Intelligence',
+        'nav-link-ic-ia': 'AI-Assisted CI',
+        'nav-link-prompts': 'The 7 Prompts',
+        'hero-h1': 'AI-Assisted Collective<br>Intelligence in Education',
+        'hero-subtitle': '7 divergent prompts for instructional design',
+        's1-title': '1. Collective Intelligence: Thinking Together Differently',
+        's1-p1': 'Collective intelligence refers to a group\'s capacity to solve problems, produce ideas, or make decisions that none of its members could have reached alone. It is not the sum of individual intelligences — it is an emergent property of interaction itself.',
+        's1-p2': 'Research by Anita Woolley and her team at MIT (2010) demonstrated the existence of a "C factor": a collective performance indicator that depends neither on the group\'s average IQ, nor on the presence of a particularly brilliant member. This factor correlates with three elements: equal distribution of speaking time, the social sensitivity of participants (their ability to read others\' emotional states), and diversity of profiles. In other words, an "intelligent" group is not a group of intelligent people — it is a group that knows how to listen.',
+        's1-p3': 'Pierre Lévy, as early as 1994 in <em>Collective Intelligence: Mankind\'s Emerging World in Cyberspace</em>, laid the foundations for a more ambitious vision: everyone knows something, no one knows everything, and relevant knowledge is distributed across all of humanity. The challenge is not to centralise expertise but to create conditions for knowledge to circulate, clash, and recombine.',
+        's1-p4': 'In education, this idea has long been put into practice — often without the name. <em>Arpentage</em>, rooted in 19<sup>th</sup>-century workers\' popular education, is a form of collective intelligence applied to reading. Payette and Champagne\'s professional co-development (1997) rests on the same principle: it is the group that helps the individual see what they cannot see alone. De Bono\'s Six Thinking Hats (1985) structure collective thought by forcing the successive adoption of distinct cognitive stances.',
+        's1-blockquote': '<strong>For further reading:</strong> Woolley, A. W. et al. (2010). "Evidence for a Collective Intelligence Factor in the Performance of Human Groups". <em>Science</em>, 330(6004). — Lévy, P. (1994). <em>Collective Intelligence</em>. La Découverte. — Surowiecki, J. (2004). <em>The Wisdom of Crowds</em>. Anchor Books.',
+        's2-title': '2. AI-Assisted Collective Intelligence in Education',
+        's2-h3-1': 'Why introduce generative AI into CI processes?',
+        's2-p1': 'Collective intelligence processes require the presence of a group. In an instructional design phase, this condition is, unfortunately, often impossible to meet. A teacher designing a lesson sequence alone at 10pm on a Sunday evening does not have a co-development group at hand. Generative AI does not replace the group — it simulates some of its cognitive functions: the multiplication of perspectives, structured contradiction, and systematic questioning.',
+        's2-p2': 'The goal is not to produce "turnkey" lesson sequences. It is to create, for an isolated instructional designer, a space for divergent thinking they could not access alone. Where solo brainstorming quickly goes in circles (one remains trapped within one\'s own frames of reference), a well-designed prompt can force a collision between incompatible perspectives — exactly what good in-person CI processes do.',
+        's2-p3': 'The aim is therefore not to have AI formulate ready-made answers! That would lead to even greater uniformity of thought. The aim is to support individual reflection through the multiplication of viewpoints. Each person will resonate with different aspects depending on where they currently stand.',
+        's2-p4': 'This is useful when working alone, but I also think it would be very interesting to explore similar processes where AI would be one voice among many in a group practising collective intelligence (trained in what AI is and how to use it, of course!)',
+        's2-h3-2': 'How these prompts were built',
+        's2-p5': 'The starting point is an inventory of collective intelligence processes documented in the literature (facilitation, cooperation, knowledge mapping, peer evaluation). For each process, the question was: what is the central cognitive mechanism of this technique — the one that produces divergent thinking — and how can it be transposed into an interaction with a generative AI?',
+        's2-p6': 'The transposition is not literal. A "Six Hats" prompt does not simply ask the AI to list six viewpoints. It stages a debate between six voices that contradict each other, challenge each other, reveal tensions — because it is the friction between hats that creates the value of the original process, not merely having six categories.',
+        's2-p7': 'Each prompt was designed not to give solutions. It raises questions, reveals tensions, maps blind spots. The teacher remains the decision-maker — the prompt helps them decide with full awareness.',
+        's2-p8': 'The 7 retained prompts share the same mechanism: they force a collision between incompatible perspectives or an adversarial dialogue on the designer\'s choices. Their purpose is to make visible what a pedagogical design presupposes, excludes, or has not yet looked squarely in the face.',
+        's2-blockquote': '<strong>For further reading:</strong> Malone, T. W. (2018). <em>Superminds: The Surprising Power of People and Computers Thinking Together</em>. Little, Brown.',
+        's3-title': '3. The 7 Divergent Prompts',
+        'mode-emploi-p': '<strong>Instructions.</strong> Replace <code>[YOUR CONTEXT]</code> (below) with one of these three types of input: an existing sequence or activity (describe it or paste it directly), an idea for a sequence (even vague), or a topic to teach. These prompts do not give solutions — they show you what you hadn\'t seen.',
+        'ctx-label': 'Your pedagogical context',
+        'ctx-badge': 'Global field',
+        'ctx-instructions': 'Describe here your sequence, activity, idea or topic to teach.<br>This text will automatically replace <strong>[YOUR CONTEXT]</strong> in the 7 prompts below, in real time.<br>You can then open any prompt and copy the personalised version to paste into your AI tool.<br>Example: <em>"A 2-hour sequence on photosynthesis for Year 9 students, with a presentation followed by a quiz"</em>',
+        'ctx-placeholder': 'Describe here your sequence, activity, idea or topic to teach…',
+        'ctx-status-waiting': 'Awaiting your context — [YOUR CONTEXT] will be replaced in the prompts',
+        'ctx-status-active': '✓ Context entered — prompts are personalised',
+        'technique-tag': 'The classic technique',
+        'acc1-title': 'Six Thinking Hats by De Bono',
+        'acc1-desc': 'Developed by Edward de Bono in 1985, the Six Thinking Hats method structures collective reflection by assigning each participant a distinct cognitive stance, symbolised by a colour: white (facts and data), red (emotions and intuitions), black (risks and limitations), yellow (opportunities and benefits), green (creativity and alternatives), blue (process management). Participants all wear the same hat at the same time, then change — preventing arguments from clashing without structure. The strength of the process lies in the deliberate separation of thinking registers: one thinks "in black" before thinking "in yellow", which prevents optimism from neutralising criticism (and vice versa).',
+        'acc2-title': 'Design Thinking',
+        'acc2-desc': 'Imported from industrial design into education, the Design Thinking approach proceeds in phases: empathy (understanding learners\' real needs), problem definition, ideation (generating alternatives), prototyping and testing. Its central contribution is the refocusing on the learner\'s lived experience rather than the teacher\'s disciplinary logic. The empathy phase, often neglected in traditional instructional design, forces consideration that what the learner experiences does not necessarily correspond to what the teacher planned.',
+        'acc3-title': 'Professional Co-development',
+        'acc3-desc': 'Formalised by Adrien Payette and Claude Champagne (1997), co-development brings together a small group of peers (4 to 8) around a real professional situation. One participant (the "client") presents their issue. The others (the "consultants") follow a strict six-step protocol: presentation, clarification, contract, consultation, synthesis, evaluation. The clarification phase is the most powerful: consultants can only ask questions — no advice, no reassuring reformulations. It is the questions that do the work, revealing what the client could not see in their own situation.',
+        'acc4-title': 'Argument Mapping',
+        'acc4-desc': 'Argument Mapping is a method for visually representing a line of reasoning: a position is broken down into premises, conclusions and counter-arguments, arranged in a tree structure. Originating from John Warfield\'s work on complex problems and developed in the field of critical thinking (notably by Tim van Gelder at the University of Melbourne), it makes the logical structure of a debate explicit. Its main virtue: it prevents confusing the impression of being right with actually having a solid argument.',
+        'acc5-title': 'Critical Intelligence & Curation',
+        'acc5-desc': 'Critical intelligence applied to education involves systematically examining the assumptions, evidence and limitations of pedagogical claims — including those one holds as self-evident. It draws on fact-checking, diversification of sources and adversarial review. In a context of information overload, this stance is all the more necessary as "received pedagogical wisdom" circulates with the force of common sense: learning styles, Dale\'s Cone, "we retain 10% of what we read" — persistent beliefs that research has strongly nuanced or invalidated.',
+        'acc6-title': '5W1H (Who, What, Where, When, Why, How)',
+        'acc6-desc': 'The 5W1H framework is a systematic analysis grid used to map the contours of a problem before seeking solutions. Its effectiveness comes from its mechanical exhaustiveness: by forcing passage through each question, it prevents jumping directly to conclusions. In a pedagogical context, it is often used to clarify a training brief or analyse a complex learning situation. Its usual limitation: applied from a single point of view, it produces only one reading of the problem.',
+        'acc7-title': 'Knowledge Trees',
+        'acc7-desc': 'Theorised by Michel Authier and Pierre Lévy (1992), Knowledge Trees are a dynamic, non-hierarchical mapping system of a community\'s knowledge. Each individual has a "coat of arms" (the mosaic of their validated skills in the form of "patents"), and the collective tree visualises the distribution of the group\'s knowledge: common trunk, specialised branches, rare competencies. The founding idea is that all knowledge has value — including that which institutions do not recognise — and that making a group\'s knowledge map visible transforms how that group learns and organises itself.',
+        'prompt-label': '▶ The divergent prompt',
+        'copy-btn': 'Copy prompt',
+        'copy-feedback': 'Copied ✓',
+        'footer-text': 'Document produced as part of the workshop "Creative Prompting and Collective Intelligence" — April 2026.'
+      }
+    };
+
+    // ===== PROMPT TEMPLATES =====
+    const templatesFR = {
+      1: `Voici [TON CONTEXTE].
+
+Tu es un groupe de 6 enseignants qui examinent cette création pédagogique,
+chacun portant un chapeau de De Bono différent :
+
+- Blanc : il s'en tient aux faits — que dit la recherche sur ce type
+  d'apprentissage ? Qu'est-ce qu'on sait réellement sur ce qui va se passer ?
+- Rouge : il parle des ressentis — quelle trajectoire émotionnelle cette
+  séquence crée-t-elle chez les apprenants ? Qu'est-ce qu'elle ignore ?
+- Noir : il voit les risques — qu'est-ce qui peut mal tourner ?
+  Quels présupposés tiennent mal à l'examen ?
+- Jaune : il défend la valeur — qu'est-ce qui est genuinement fort ici,
+  qui mérite d'être protégé ?
+- Vert : il cherche l'alternative — quelle voie complètement différente
+  pourrait atteindre le même objectif d'apprentissage ?
+- Bleu : il recadre — est-ce même la bonne question de design ?
+  Qu'est-ce qu'on n'est pas en train de concevoir ?
+
+Mets en scène le débat : chaque chapeau s'exprime avec sa propre logique.
+Ils s'interpellent directement. Il y a au moins un moment où deux chapeaux
+se contredisent frontalement sur le même élément. Il y a au moins une
+observation qu'un seul chapeau voit et que les autres ont tous ratée.
+
+Conclus non pas par une séquence redessinée, mais par la carte des
+3 tensions les plus importantes que ce groupe a mises au jour —
+tensions que l'enseignant devra naviguer lui-même.`,
+
+      2: `Voici [TON CONTEXTE].
+(Si c'est une idée ou un thème, imagine la séquence telle qu'elle se
+déroulerait dans sa version la plus naturelle, la plus "évidente".)
+
+Joue successivement le rôle de 3 apprenants aux profils extrêmes :
+
+1. L'apprenant très à l'aise avec les apprentissages formels
+   mais profondément désengagé de ce sujet
+2. L'apprenant en grande difficulté sur ce type de tâche
+   mais intensément motivé
+3. L'apprenant dont la façon d'apprendre ne correspond à aucune
+   des modalités implicitement prévues par ce design
+
+Pour chacun, décris :
+- comment il vit la séquence moment par moment
+- ce qu'il retient réellement à la fin
+- ce qu'il rate — et pourquoi
+- ce dont il aurait eu besoin sans jamais le formuler
+
+Depuis ces 3 regards simultanés, ne propose pas de redesign.
+Formule plutôt les 3 questions que l'enseignant devrait se poser
+avant de toucher à quoi que ce soit — les questions que ces
+3 silhouettes ont rendues impossibles à ignorer.`,
+
+      3: `Je travaille sur [TON CONTEXTE]. Je te le décris :
+[décris ta séquence, ton idée ou ton thème aussi librement que tu veux]
+
+Tu joues le rôle d'un groupe de codéveloppement de 5 collègues qui,
+pendant toute la première phase, ne peuvent poser QUE des questions —
+jamais de conseils, jamais de reformulations rassurantes.
+
+Ces questions doivent cibler :
+- Ce que ce design suppose que les apprenants vont faire dans leur tête
+  (et qui n'est peut-être pas ce qui va se passer)
+- Ce que ce design optimise vraiment — pas forcément ce que je crois
+- Qui n'a pas été pensé dans la conception : quel apprenant, quel contexte,
+  quelle contrainte est restée hors champ
+- Les arbitrages qui ont été rendus invisibles : ce qui a été sacrifié
+  pour que ce design "fonctionne"
+- Au moins une question que je n'ai pas envie qu'on me pose
+
+Pose 10 questions. Je réponds. Tu poses 5 nouvelles questions
+depuis ce que ma réponse a révélé.
+
+Puis seulement : synthétise ce que ces questions ont mis au jour —
+non pas une solution, mais le paysage de ce qui était resté dans l'ombre.`,
+
+      4: `Voici [TON CONTEXTE].
+
+Je vais t'exposer les choix pédagogiques que j'ai faits (ou que je
+m'apprête à faire) et pourquoi je les ai faits.
+[expose tes choix : ordre, format, modalité, évaluation, durée, etc.]
+
+Tu es le contradicteur de service. Pour chacun de mes choix, tu dois :
+
+1. Le reformuler plus précisément que je ne l'ai dit —
+   en trouver la version la plus forte et la plus honnête
+2. Identifier le présupposé caché qui le rend évident à mes yeux
+3. Formuler l'argument symétrique opposé le plus solide possible
+
+Tu ne cherches pas à avoir raison. Tu cherches à ce qu'on construise
+ensemble la carte d'arguments la plus complète et la plus honnête.
+
+Quand tu as traité tous mes choix, construis la carte complète
+qui intègre les deux côtés — avec les points de convergence inattendus
+que ce dialogue a révélés, et que ni mon design initial ni son contraire
+n'avaient su saisir.`,
+
+      5: `Voici [TON CONTEXTE].
+
+Toute séquence pédagogique contient des théories implicites de
+l'apprentissage. Nous allons les mettre au jour en 5 étapes :
+
+1. Ce que ce design dit explicitement sur comment l'apprentissage
+   se produit ici (même si ça n'a jamais été formulé)
+2. Ce qu'il présuppose implicitement — sur les apprenants, sur la nature
+   du savoir enseigné, sur ce que "ça marche" veut dire
+3. Les expériences ou intuitions qui semblent confirmer ces présupposés
+   (et pourquoi ils paraissent si évidents)
+4. Les éléments — recherches, contre-exemples, profils d'apprenants —
+   qui les nuancent ou les compliquent
+5. La formulation plus honnête, plus précise, des intentions pédagogiques
+   qui résiste à cet examen
+
+Ne cherche pas à démolir le design. Cherche ce qu'il dit de vrai
+malgré ses limites — et ce qu'il faudrait assumer pleinement
+pour le tenir debout.`,
+
+      6: `Voici [TON CONTEXTE].
+
+Applique le QQOQPC à cette création pédagogique depuis 5 points de vue
+radicalement différents :
+
+1. L'apprenant qu'on n'a pas imaginé
+   (celui qui va rater pour une raison qu'on n'a pas anticipée)
+2. Le collègue qui reprend la séquence sans toi dans 6 mois
+   (sans le contexte, sans les ajustements tacites, sans ton énergie)
+3. Le programme officiel
+   (ce que les objectifs institutionnels visaient, et où la séquence
+   s'en écarte sans le dire explicitement)
+4. Le chercheur en sciences cognitives
+   (ce que la séquence suppose sur le cerveau qui apprend,
+   et ce que la littérature dit à ce sujet)
+5. L'apprenant dans 10 ans
+   (ce qu'il aura réellement retenu, et si ça comptera encore)
+
+Pour chacun, les 6 réponses au QQOQPC peuvent se contredire entre elles.
+C'est voulu.
+
+Conclus par : quelles tensions entre ces 5 lectures révèlent la vraie
+question de design sous-jacente — celle que personne n'a formulée
+directement, mais que toutes ces perspectives ont tournée autour ?`,
+
+      7: `Voici [TON CONTEXTE].
+
+Construis la carte des savoirs impliquée par cette création pédagogique,
+telle qu'elle serait dessinée par 3 personnes radicalement différentes :
+
+1. L'apprenant en entrée de séquence
+   Que croit-il déjà savoir ? Que sait-il réellement ?
+   Qu'ignore-t-il qu'il ne sait pas ?
+   Comment le design adresse-t-il (ou ignore-t-il) chacune de ces couches ?
+
+2. L'enseignant concepteur
+   Comment structure-t-il le savoir dans ce design ?
+   Quels liens considère-t-il comme évidents ?
+   Qu'a-t-il mis au centre, qu'a-t-il relégué en périphérie ?
+
+3. L'expert du domaine
+   Qu'est-ce qui manque ?
+   Qu'a-t-on simplifié au point d'introduire une distorsion ?
+   Qu'est-ce qui est enseignable ici mais pas forcément ce qui compte
+   dans la pratique réelle de ce savoir ?
+
+Pour chacun : dessine l'arbre (liste indentée) avec 6 nœuds caractéristiques.
+
+Conclus par : que révèle la comparaison des 3 arbres sur le curriculum
+implicite de ce design — l'apprentissage qu'il produit réellement,
+au-delà de ses objectifs déclarés ?`
+    };
+
+    const templatesEN = {
+      1: `Here is [YOUR CONTEXT].
+
+You are a group of 6 teachers examining this pedagogical creation,
+each wearing a different De Bono hat:
+
+- White: sticks to the facts — what does research say about this type
+  of learning? What do we actually know about what will happen?
+- Red: speaks to feelings — what emotional journey does this
+  sequence create for learners? What does it ignore?
+- Black: sees the risks — what can go wrong?
+  Which assumptions don't hold up under scrutiny?
+- Yellow: defends value — what is genuinely strong here,
+  worth protecting?
+- Green: seeks alternatives — what completely different path
+  could achieve the same learning objective?
+- Blue: reframes — is this even the right design question?
+  What are we not designing?
+
+Stage the debate: each hat speaks with its own logic.
+They address each other directly. There is at least one moment where two hats
+directly contradict each other on the same element. There is at least one
+observation that only one hat sees and all others missed.
+
+Conclude not with a redesigned sequence, but with a map of the
+3 most important tensions this group has uncovered —
+tensions the teacher will have to navigate themselves.`,
+
+      2: `Here is [YOUR CONTEXT].
+(If it is an idea or topic, imagine the sequence as it would unfold
+in its most natural, most "obvious" version.)
+
+Play the role of 3 learners with extreme profiles in turn:
+
+1. The learner highly comfortable with formal learning
+   but deeply disengaged from this subject
+2. The learner with great difficulty with this type of task
+   but intensely motivated
+3. The learner whose way of learning matches none of the
+   modalities implicitly built into this design
+
+For each, describe:
+- how they experience the sequence moment by moment
+- what they actually retain at the end
+- what they miss — and why
+- what they needed without ever being able to articulate it
+
+From these 3 simultaneous perspectives, do not propose a redesign.
+Instead, formulate the 3 questions the teacher should ask themselves
+before touching anything — questions that these
+3 profiles have made impossible to ignore.`,
+
+      3: `I am working on [YOUR CONTEXT]. I describe it to you:
+[describe your sequence, your idea or your topic as freely as you like]
+
+You play the role of a co-development group of 5 colleagues who,
+throughout the entire first phase, can ONLY ask questions —
+never advice, never reassuring reformulations.
+
+These questions must target:
+- What this design assumes learners will do in their heads
+  (which may not be what will actually happen)
+- What this design actually optimises — not necessarily what I think
+- Who has not been thought of in the design: which learner, which context,
+  which constraint has been left out of scope
+- The trade-offs that have been made invisible: what was sacrificed
+  for this design to "work"
+- At least one question I would rather not be asked
+
+Ask 10 questions. I answer. You ask 5 new questions
+based on what my answer revealed.
+
+Then only: synthesise what these questions have uncovered —
+not a solution, but the landscape of what remained in the shadows.`,
+
+      4: `Here is [YOUR CONTEXT].
+
+I will present the pedagogical choices I have made (or am about to make)
+and why I made them.
+[present your choices: sequence, format, modality, assessment, duration, etc.]
+
+You are the devil's advocate. For each of my choices, you must:
+
+1. Reformulate it more precisely than I have —
+   find its strongest and most honest version
+2. Identify the hidden assumption that makes it seem obvious to me
+3. Formulate the strongest possible symmetrical counter-argument
+
+You are not trying to be right. You are trying to build together
+the most complete and honest argument map possible.
+
+When you have addressed all my choices, build the complete map
+integrating both sides — with the unexpected points of convergence
+this dialogue has revealed, which neither my initial design nor its
+opposite had managed to capture.`,
+
+      5: `Here is [YOUR CONTEXT].
+
+Every pedagogical sequence contains implicit theories of learning.
+We are going to uncover them in 5 steps:
+
+1. What this design says explicitly about how learning
+   happens here (even if it was never articulated)
+2. What it implicitly presupposes — about the learners, about the nature
+   of the knowledge being taught, about what "working" means
+3. The experiences or intuitions that seem to confirm these assumptions
+   (and why they feel so obvious)
+4. The elements — research, counter-examples, learner profiles —
+   that nuance or complicate them
+5. The more honest, more precise formulation of the pedagogical intentions
+   that survives this examination
+
+Do not try to demolish the design. Seek what it says that is true
+despite its limits — and what would need to be fully assumed
+to keep it standing.`,
+
+      6: `Here is [YOUR CONTEXT].
+
+Apply the 5W1H to this pedagogical creation from 5 radically
+different viewpoints:
+
+1. The learner we didn't imagine
+   (the one who will fail for a reason we didn't anticipate)
+2. The colleague who takes over the sequence without you in 6 months
+   (without context, without tacit adjustments, without your energy)
+3. The official curriculum
+   (what the institutional objectives aimed for, and where the sequence
+   departs from them without saying so explicitly)
+4. The cognitive scientist
+   (what the sequence assumes about the learning brain,
+   and what the literature says about it)
+5. The learner in 10 years
+   (what they will have actually retained, and whether it will still matter)
+
+For each, the 6 answers to the 5W1H may contradict each other.
+That is intentional.
+
+Conclude with: what tensions between these 5 readings reveal the real
+underlying design question — the one nobody formulated directly,
+but that all these perspectives have been circling around?`,
+
+      7: `Here is [YOUR CONTEXT].
+
+Build the knowledge map implied by this pedagogical creation,
+as it would be drawn by 3 radically different people:
+
+1. The learner at the start of the sequence
+   What do they think they already know? What do they actually know?
+   What do they not know that they don't know?
+   How does the design address (or ignore) each of these layers?
+
+2. The teacher-designer
+   How do they structure knowledge in this design?
+   Which connections do they consider obvious?
+   What have they placed at the centre, what have they relegated to the periphery?
+
+3. The domain expert
+   What is missing?
+   What has been simplified to the point of introducing distortion?
+   What is teachable here but not necessarily what matters
+   in the actual practice of this knowledge?
+
+For each: draw the tree (indented list) with 6 characteristic nodes.
+
+Conclude with: what does the comparison of the 3 trees reveal about the
+implicit curriculum of this design — the learning it actually produces,
+beyond its stated objectives?`
+    };
+
+    // ===== LANGUAGE SWITCHING =====
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.getElementById('lang-toggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+
+      // Update all i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (T[lang][key] !== undefined) {
+          el.innerHTML = T[lang][key];
+        }
+      });
+
+      // Update textarea placeholder
+      const ta = document.getElementById('globalContext');
+      if (ta) ta.placeholder = T[lang]['ctx-placeholder'];
+
+      // Re-render prompts with new language
+      renderAll();
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'fr' ? 'en' : 'fr');
+    }
+
+    // ===== RENDER PROMPTS =====
+    function getContext() {
+      return document.getElementById('globalContext').value.trim();
+    }
+
+    function getCurrentTemplates() {
+      return currentLang === 'fr' ? templatesFR : templatesEN;
+    }
+
+    function getCurrentPlaceholder() {
+      return PLACEHOLDERS[currentLang];
+    }
+
+    function renderAll() {
+      const ctx = getContext();
+      const ph = getCurrentPlaceholder();
+      const display = ctx || ph;
+      const hasCtx = ctx.length > 0;
+      const tpls = getCurrentTemplates();
+
+      // Update status
+      const status = document.getElementById('contextStatus');
+      if (hasCtx) {
+        status.textContent = T[currentLang]['ctx-status-active'];
+        status.classList.add('active');
+      } else {
+        status.textContent = T[currentLang]['ctx-status-waiting'];
+        status.classList.remove('active');
+      }
+
+      for (let i = 1; i <= 7; i++) {
+        const el = document.getElementById('pt-' + i);
+        if (!el) continue;
+        const raw = tpls[i];
+        const rendered = raw.replace(new RegExp(escapeRegex(ph), 'g'), display);
+
+        if (hasCtx) {
+          const parts = rendered.split(display);
+          const escapedParts = parts.map(escapeHtml);
+          const highlightSpan = `<span class="context-highlight">${escapeHtml(display)}</span>`;
+          el.innerHTML = escapedParts.join(highlightSpan);
+        } else {
+          el.textContent = rendered;
+        }
+      }
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function escapeRegex(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // ===== ACCORDION =====
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open if it wasn't already open
+      if (!isOpen) {
+        item.classList.add('open');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // ===== COPY =====
+    function copyPrompt(id, btn) {
+      const ctx = getContext() || getCurrentPlaceholder();
+      const ph = getCurrentPlaceholder();
+      const tpls = getCurrentTemplates();
+      const text = tpls[id].replace(new RegExp(escapeRegex(ph), 'g'), ctx);
+      const feedback = btn.parentElement.querySelector('.copy-feedback');
+
+      const showFeedback = () => {
+        feedback.classList.add('visible');
+        setTimeout(() => feedback.classList.remove('visible'), 2200);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showFeedback).catch(() => fallbackCopy(text, showFeedback));
+      } else {
+        fallbackCopy(text, showFeedback);
+      }
+    }
+
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) { }
+      document.body.removeChild(ta);
+      cb();
+    }
+
+    // ===== INIT =====
+    document.getElementById('globalContext').addEventListener('input', renderAll);
+    renderAll();
+  </script>
+</body>
+
+</html>

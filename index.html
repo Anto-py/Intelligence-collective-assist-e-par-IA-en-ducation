@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
 
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intelligence collective assistée en éducation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&family=Inter:wght@400;600&display=swap"
-    rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Intelligence collective assistée en éducation</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@400;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
     /* ===== RETRO BASE ===== */
     :root {
       --retro-teal: #127676;
@@ -650,195 +648,159 @@
     }
   </style>
 </head>
-
 <body>
-
-  <!-- ===== NAV ===== -->
-  <nav>
-    <span class="nav-brand" data-i18n="nav-brand">IC &amp; IA — Éducation</span>
-    <div class="nav-links">
-      <a href="#intro" data-i18n="nav-link-intro">L'intelligence collective</a>
-      <a href="#ic-ia" data-i18n="nav-link-ic-ia">IC assistée par IA</a>
-      <a href="#prompts" data-i18n="nav-link-prompts">Les 7 prompts</a>
-    </div>
-    <button id="lang-toggle" class="lang-btn" onclick="toggleLang()" aria-label="Switch language">EN</button>
-  </nav>
-
-  <!-- ===== PAGE FRAME ===== -->
-  <div class="page-wrapper">
-    <div class="page-frame">
-
-      <!-- Corner ornaments -->
-      <svg class="corner corner-tl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
-        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
-          stroke="#127676" stroke-width="1.5" />
-        <circle cx="8" cy="8" r="3" fill="#127676" />
-        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
-      </svg>
-      <svg class="corner corner-tr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
-        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
-          stroke="#127676" stroke-width="1.5" />
-        <circle cx="8" cy="8" r="3" fill="#127676" />
-        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
-      </svg>
-      <svg class="corner corner-bl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
-        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
-          stroke="#127676" stroke-width="1.5" />
-        <circle cx="8" cy="8" r="3" fill="#127676" />
-        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
-      </svg>
-      <svg class="corner corner-br" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" aria-hidden="true">
-        <path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none"
-          stroke="#127676" stroke-width="1.5" />
-        <circle cx="8" cy="8" r="3" fill="#127676" />
-        <path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1" />
-      </svg>
-
-      <!-- ===== HERO ===== -->
-      <header class="hero">
-        <h1 data-i18n="hero-h1">Intelligence collective<br>assistée en éducation</h1>
-        <p class="subtitle" data-i18n="hero-subtitle">7 prompts divergents pour la conception pédagogique</p>
-      </header>
-
-      <!-- ===== SECTION 1 ===== -->
-      <section id="intro">
-        <h2 class="section-title" data-i18n="s1-title">1. L'intelligence collective : penser ensemble autrement</h2>
-
-        <p data-i18n="s1-p1">L'intelligence collective désigne la capacité d'un groupe à résoudre des problèmes, produire des idées ou
+<!-- ===== NAV ===== -->
+<nav>
+<span class="nav-brand" data-i18n="nav-brand">IC &amp; IA — Éducation</span>
+<div class="nav-links">
+<a data-i18n="nav-link-intro" href="#intro">L'intelligence collective</a>
+<a data-i18n="nav-link-ic-ia" href="#ic-ia">IC assistée par IA</a>
+<a data-i18n="nav-link-prompts" href="#prompts">Les 7 prompts</a>
+</div>
+<button aria-label="Switch language" class="lang-btn" id="lang-toggle" onclick="toggleLang()">EN</button>
+</nav>
+<!-- ===== PAGE FRAME ===== -->
+<div class="page-wrapper">
+<div class="page-frame">
+<!-- Corner ornaments -->
+<svg aria-hidden="true" class="corner corner-tl" viewbox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+<path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none" stroke="#127676" stroke-width="1.5"></path>
+<circle cx="8" cy="8" fill="#127676" r="3"></circle>
+<path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1"></path>
+</svg>
+<svg aria-hidden="true" class="corner corner-tr" viewbox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+<path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none" stroke="#127676" stroke-width="1.5"></path>
+<circle cx="8" cy="8" fill="#127676" r="3"></circle>
+<path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1"></path>
+</svg>
+<svg aria-hidden="true" class="corner corner-bl" viewbox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+<path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none" stroke="#127676" stroke-width="1.5"></path>
+<circle cx="8" cy="8" fill="#127676" r="3"></circle>
+<path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1"></path>
+</svg>
+<svg aria-hidden="true" class="corner corner-br" viewbox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+<path d="M5,5 C5,5 20,5 30,15 C40,25 35,40 35,40 C35,40 25,30 15,30 C5,30 5,5 5,5 Z" fill="none" stroke="#127676" stroke-width="1.5"></path>
+<circle cx="8" cy="8" fill="#127676" r="3"></circle>
+<path d="M15,15 Q20,10 25,18" fill="none" stroke="#127676" stroke-width="1"></path>
+</svg>
+<!-- ===== HERO ===== -->
+<header class="hero">
+<h1 data-i18n="hero-h1">Intelligence collective<br/>assistée en éducation</h1>
+<p class="subtitle" data-i18n="hero-subtitle">7 prompts divergents pour la conception pédagogique</p>
+</header>
+<!-- ===== SECTION 1 ===== -->
+<section id="intro">
+<h2 class="section-title" data-i18n="s1-title">1. L'intelligence collective : penser ensemble autrement</h2>
+<p data-i18n="s1-p1">L'intelligence collective désigne la capacité d'un groupe à résoudre des problèmes, produire des idées ou
           prendre des décisions qu'aucun de ses membres n'aurait pu atteindre seul. Ce n'est pas la somme des
           intelligences individuelles — c'est une propriété émergente de l'interaction elle-même.</p>
-
-        <p data-i18n="s1-p2">Les travaux d'Anita Woolley et de son équipe au MIT (2010) ont montré l'existence d'un « facteur C » : un
+<p data-i18n="s1-p2">Les travaux d'Anita Woolley et de son équipe au MIT (2010) ont montré l'existence d'un « facteur C » : un
           indicateur de performance collective qui ne dépend ni du QI moyen du groupe, ni de la présence d'un membre
           particulièrement brillant. Ce facteur est corrélé à trois éléments : l'équité dans la distribution de la
           parole, la sensibilité sociale des participants (leur capacité à lire les états émotionnels des autres), et la
           diversité des profils. Autrement dit, un groupe « intelligent » n'est pas un groupe de gens intelligents —
           c'est un groupe qui sait s'écouter.</p>
-
-        <p data-i18n="s1-p3">Pierre Lévy, dès 1994 dans <em>L'intelligence collective : pour une anthropologie du cyberespace</em>, posait
+<p data-i18n="s1-p3">Pierre Lévy, dès 1994 dans <em>L'intelligence collective : pour une anthropologie du cyberespace</em>, posait
           les bases d'une vision plus ambitieuse : chacun sait quelque chose, personne ne sait tout, et le savoir
           pertinent se distribue dans l'ensemble de l'humanité. L'enjeu n'est pas de centraliser l'expertise mais de
           créer les conditions pour que les savoirs circulent, se confrontent et se recomposent.</p>
-
-        <p data-i18n="s1-p4">Dans le champ éducatif, cette idée a été mise en pratique depuis longtemps — souvent sans le nom.
+<p data-i18n="s1-p4">Dans le champ éducatif, cette idée a été mise en pratique depuis longtemps — souvent sans le nom.
           L'arpentage, issu de l'éducation populaire ouvrière du XIX<sup>e</sup> siècle, est une forme d'intelligence
           collective appliquée à la lecture. Le codéveloppement professionnel de Payette et Champagne (1997) repose sur
           le même principe : c'est le groupe qui aide l'individu à voir ce qu'il ne voit pas seul. Les Six Chapeaux de
           De Bono (1985) structurent la pensée collective en forçant l'adoption successive de postures cognitives
           distinctes.</p>
-
-        <blockquote data-i18n="s1-blockquote">
-          <strong>Pour aller plus loin :</strong> Woolley, A. W. et al. (2010). « Evidence for a Collective Intelligence
+<blockquote data-i18n="s1-blockquote">
+<strong>Pour aller plus loin :</strong> Woolley, A. W. et al. (2010). « Evidence for a Collective Intelligence
           Factor in the Performance of Human Groups ». <em>Science</em>, 330(6004). — Lévy, P. (1994).
           <em>L'intelligence collective</em>. La Découverte. — Surowiecki, J. (2004). <em>The Wisdom of Crowds</em>.
           Anchor Books.
         </blockquote>
-      </section>
-
-      <div class="retro-separator">❧</div>
-
-      <!-- ===== SECTION 2 ===== -->
-      <section id="ic-ia">
-        <h2 class="section-title" data-i18n="s2-title">2. L'intelligence collective assistée par IA en éducation</h2>
-
-        <h3 class="subsection-title" data-i18n="s2-h3-1">Pourquoi introduire l'IA générative dans les processus d'IC ?</h3>
-
-        <p data-i18n="s2-p1">Les procédés d'intelligence collective supposent la présence d'un groupe. Dans une phase de conception
+</section>
+<div class="retro-separator">❧</div>
+<!-- ===== SECTION 2 ===== -->
+<section id="ic-ia">
+<h2 class="section-title" data-i18n="s2-title">2. L'intelligence collective assistée par IA en éducation</h2>
+<h3 class="subsection-title" data-i18n="s2-h3-1">Pourquoi introduire l'IA générative dans les processus d'IC ?</h3>
+<p data-i18n="s2-p1">Les procédés d'intelligence collective supposent la présence d'un groupe. Dans une phase de conception
           pédagogique, cette
           condition est, malheureusement, souvent impossible à satisfaire. Un enseignant qui conçoit seul une séquence à
           22h un dimanche soir n'a
           pas de groupe de codéveloppement sous la main. L'IA générative ne remplace pas le groupe — elle en simule
           certaines fonctions cognitives : la multiplication des perspectives, la contradiction structurée, le
           questionnement systématique.</p>
-
-        <p data-i18n="s2-p2">L'objectif n'est pas de produire des séquences pédagogiques « clé en main ». C'est de créer, pour un
+<p data-i18n="s2-p2">L'objectif n'est pas de produire des séquences pédagogiques « clé en main ». C'est de créer, pour un
           concepteur pédagogique isolé, un espace de pensée divergente qu'il ne pourrait pas se procurer seul. Là où un
           brainstorming solitaire tourne vite en rond (on reste prisonnier de ses propres cadres de référence), un
           prompt bien conçu peut forcer la collision entre perspectives incompatibles — exactement ce que font les bons
           procédés d'IC en présentiel.</p>
-
-        <p data-i18n="s2-p3">Le but n'est donc pas de faire formuler des réponses toutes faites générées par l'IA ! Cela mènerait à encore
+<p data-i18n="s2-p3">Le but n'est donc pas de faire formuler des réponses toutes faites générées par l'IA ! Cela mènerait à encore
           plus d'uniformisation de la pensée. Le but est d'aider la réflexion individuelle par la multiplication des
           points de vue. Chacun entrera en résonance avec des aspects différents selon là où il en est.</p>
-
-        <p data-i18n="s2-p4">C'est utile quand on est seul mais je pense qu'il serait aussi très intéressant d'explorer des procédés
+<p data-i18n="s2-p4">C'est utile quand on est seul mais je pense qu'il serait aussi très intéressant d'explorer des procédés
           similaires où l'IA serait une voix parmi d'autres dans un groupe pratiquant l'intelligence collective (Et
           formé à ce qu'est l'IA et à comment l'utiliser, bien sûr!)</p>
-
-        <h3 class="subsection-title" data-i18n="s2-h3-2">Comment ces prompts ont été construits</h3>
-
-        <p data-i18n="s2-p5">Le point de départ est un inventaire de procédés d'intelligence collective documentés dans la littérature
+<h3 class="subsection-title" data-i18n="s2-h3-2">Comment ces prompts ont été construits</h3>
+<p data-i18n="s2-p5">Le point de départ est un inventaire de procédés d'intelligence collective documentés dans la littérature
           (facilitation, coopération, cartographie des savoirs, évaluation entre pairs). Pour chaque procédé, la
           question posée était : quel est le mécanisme cognitif central de cette technique — celui qui produit la pensée
           divergente — et comment le transposer dans une interaction avec une IA générative ?</p>
-
-        <p data-i18n="s2-p6">La transposition n'est pas littérale. Un prompt « Six Chapeaux » ne demande pas simplement à l'IA de lister
+<p data-i18n="s2-p6">La transposition n'est pas littérale. Un prompt « Six Chapeaux » ne demande pas simplement à l'IA de lister
           six points de vue. Il met en scène un débat entre six voix qui se contredisent, s'interpellent, révèlent des
           tensions — parce que c'est la friction entre les chapeaux qui crée la valeur du procédé original, pas le fait
           d'avoir six catégories.</p>
-
-        <p data-i18n="s2-p7">Chaque prompt a été conçu pour ne pas donner de solution. Il pose des questions, révèle des tensions,
+<p data-i18n="s2-p7">Chaque prompt a été conçu pour ne pas donner de solution. Il pose des questions, révèle des tensions,
           cartographie des angles morts. L'enseignant reste le décideur — le prompt l'aide à décider en connaissance de
           cause.</p>
-
-        <p data-i18n="s2-p8">Les 7 prompts retenus partagent un même mécanisme : ils forcent une collision entre perspectives
+<p data-i18n="s2-p8">Les 7 prompts retenus partagent un même mécanisme : ils forcent une collision entre perspectives
           incompatibles ou un dialogue adversarial sur les choix du concepteur. Leur but est de rendre visible ce qu'un
           design pédagogique présuppose, exclut ou n'a pas encore regardé en face.</p>
-
-        <blockquote data-i18n="s2-blockquote">
-          <strong>Pour aller plus loin :</strong> Malone, T. W. (2018). <em>Superminds: The Surprising Power of People
+<blockquote data-i18n="s2-blockquote">
+<strong>Pour aller plus loin :</strong> Malone, T. W. (2018). <em>Superminds: The Surprising Power of People
             and Computers Thinking Together</em>. Little, Brown.
         </blockquote>
-      </section>
-
-      <div class="retro-separator">✿</div>
-
-      <!-- ===== SECTION 3 ===== -->
-      <section id="prompts">
-        <h2 class="section-title" data-i18n="s3-title">3. Les 7 prompts divergents</h2>
-
-        <div class="mode-emploi">
-          <p data-i18n="mode-emploi-p"><strong>Mode d'emploi.</strong> Remplace <code>[TON CONTEXTE]</code> (ci-dessous) par l'un de ces trois
+</section>
+<div class="retro-separator">✿</div>
+<!-- ===== SECTION 3 ===== -->
+<section id="prompts">
+<h2 class="section-title" data-i18n="s3-title">3. Les 7 prompts divergents</h2>
+<div class="mode-emploi">
+<p data-i18n="mode-emploi-p"><strong>Mode d'emploi.</strong> Remplace <code>[TON CONTEXTE]</code> (ci-dessous) par l'un de ces trois
             types d'entrée :
             une séquence ou activité existante (décris-la ou colle-la directement), une idée de séquence (même floue),
             ou un thème à enseigner. Ces prompts ne donnent pas de solution — ils montrent ce que tu n'avais pas vu.</p>
-        </div>
-
-        <!-- GLOBAL CONTEXT FIELD -->
-        <div class="context-zone">
-          <div class="context-zone-header">
-            <span class="context-label" data-i18n="ctx-label">Ton contexte pédagogique</span>
-            <span class="context-badge" data-i18n="ctx-badge">Champ global</span>
-          </div>
-          <p class="context-instructions" data-i18n="ctx-instructions">
-            Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner.<br>
+</div>
+<!-- GLOBAL CONTEXT FIELD -->
+<div class="context-zone">
+<div class="context-zone-header">
+<span class="context-label" data-i18n="ctx-label">Ton contexte pédagogique</span>
+<span class="context-badge" data-i18n="ctx-badge">Champ global</span>
+</div>
+<p class="context-instructions" data-i18n="ctx-instructions">
+            Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner.<br/>
             Ce texte remplacera automatiquement <strong>[TON CONTEXTE]</strong> dans les 7 prompts ci-dessous, en temps
-            réel.<br>
+            réel.<br/>
             Tu peux ensuite ouvrir n'importe quel prompt et copier la version personnalisée pour la coller dans ton
-            outil IA.<br>
+            outil IA.<br/>
             Exemple : <em>« Une séquence de 2h sur la photosynthèse pour des élèves de 3<sup>e</sup>, avec un exposé
               puis un quiz »</em>
-          </p>
-          <textarea id="globalContext"
-            placeholder="Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner…"
-            aria-label="Contexte pédagogique global"></textarea>
-          <p class="context-status" id="contextStatus">En attente de ton contexte — [TON CONTEXTE] sera remplacé dans
+</p>
+<textarea aria-label="Contexte pédagogique global" id="globalContext" placeholder="Décris ici ta séquence, ton activité, ton idée ou ton thème à enseigner…"></textarea>
+<p class="context-status" id="contextStatus">En attente de ton contexte — [TON CONTEXTE] sera remplacé dans
             les prompts</p>
-        </div>
-
-        <!-- ACCORDION -->
-        <div class="accordion" id="accordion">
-
-          <!-- 3.1 Six Chapeaux -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">01</span>
-              <span class="acc-title" data-i18n="acc1-title">Six Chapeaux de De Bono</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc1-desc">Développée par Edward de Bono en 1985, la méthode des Six Chapeaux structure la
+</div>
+<!-- ACCORDION -->
+<div class="accordion" id="accordion">
+<!-- 3.1 Six Chapeaux -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">01</span>
+<span class="acc-title" data-i18n="acc1-title">Six Chapeaux de De Bono</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc1-desc">Développée par Edward de Bono en 1985, la méthode des Six Chapeaux structure la
                 réflexion collective en attribuant à chaque participant une posture cognitive distincte, symbolisée par
                 une couleur : le blanc (faits et données), le rouge (émotions et intuitions), le noir (risques et
                 limites), le jaune (opportunités et bénéfices), le vert (créativité et alternatives), le bleu (pilotage
@@ -846,205 +808,189 @@
                 que les arguments s'entrechoquent sans structure. La force du procédé tient à la séparation volontaire
                 des registres de pensée : on pense « en noir » avant de penser « en jaune », ce qui empêche l'optimisme
                 de neutraliser la critique (et inversement).</p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-1"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(1, this)" aria-label="Copier le prompt Six Chapeaux">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3.2 Design Thinking -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">02</span>
-              <span class="acc-title" data-i18n="acc2-title">Design Thinking</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc2-desc">Importée du design industriel vers l'éducation, la démarche de Design Thinking
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-1"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt Six Chapeaux" class="retro-btn-pill" onclick="copyPrompt(1, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
+</div>
+</div>
+</div>
+<!-- 3.2 Design Thinking -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">02</span>
+<span class="acc-title" data-i18n="acc2-title">Design Thinking</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc2-desc">Importée du design industriel vers l'éducation, la démarche de Design Thinking
                 procède en phases : empathie (comprendre les besoins réels des utilisateurs, ici les apprenants),
                 définition du problème, idéation (génération d'alternatives), prototypage et test. Son apport central
                 est le recentrage sur l'expérience vécue par l'apprenant plutôt que sur la logique disciplinaire de
                 l'enseignant. La phase d'empathie, souvent négligée dans la conception pédagogique classique, oblige à
                 considérer que ce que l'apprenant vit ne correspond pas nécessairement à ce que l'enseignant a prévu.
               </p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-2"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(2, this)"
-                  aria-label="Copier le prompt Design Thinking">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3.3 Codéveloppement -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">03</span>
-              <span class="acc-title" data-i18n="acc3-title">Codéveloppement professionnel</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc3-desc">Formalisé par Adrien Payette et Claude Champagne (1997), le codéveloppement
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-2"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt Design Thinking" class="retro-btn-pill" onclick="copyPrompt(2, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
+</div>
+</div>
+</div>
+<!-- 3.3 Codéveloppement -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">03</span>
+<span class="acc-title" data-i18n="acc3-title">Codéveloppement professionnel</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc3-desc">Formalisé par Adrien Payette et Claude Champagne (1997), le codéveloppement
                 réunit un petit groupe de pairs (4 à 8) autour d'une situation professionnelle réelle. Un participant
                 (le « client ») expose sa problématique. Les autres (les « consultants ») suivent un protocole strict en
                 six étapes : exposé, clarification, contrat, consultation, synthèse, évaluation. La phase de
                 clarification est la plus puissante : les consultants ne peuvent que poser des questions — pas de
                 conseils, pas de solutions. Ce sont les questions qui font le travail, en révélant ce que le client ne
                 voyait pas dans sa propre situation.</p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-3"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(3, this)"
-                  aria-label="Copier le prompt Codéveloppement">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3.4 Cartographie d'arguments -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">04</span>
-              <span class="acc-title" data-i18n="acc4-title">Cartographie d'arguments</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc4-desc">La cartographie d'arguments (Argument Mapping) est une méthode de représentation
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-3"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt Codéveloppement" class="retro-btn-pill" onclick="copyPrompt(3, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
+</div>
+</div>
+</div>
+<!-- 3.4 Cartographie d'arguments -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">04</span>
+<span class="acc-title" data-i18n="acc4-title">Cartographie d'arguments</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc4-desc">La cartographie d'arguments (Argument Mapping) est une méthode de représentation
                 visuelle d'un raisonnement : on décompose une position en prémisses, conclusions et contre-arguments,
                 disposés en arborescence. Issue des travaux de John Warfield sur les problèmes complexes et développée
                 dans le champ de la pensée critique (notamment par Tim van Gelder à l'Université de Melbourne), elle
                 rend explicite la structure logique d'un débat. Sa vertu principale : elle empêche de confondre
                 l'impression d'avoir raison avec le fait d'avoir un argument solide.</p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-4"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(4, this)"
-                  aria-label="Copier le prompt Cartographie d'arguments">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3.5 Intelligence critique -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">05</span>
-              <span class="acc-title" data-i18n="acc5-title">Intelligence critique et curation</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc5-desc">L'intelligence critique appliquée à l'éducation consiste à examiner
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-4"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt Cartographie d'arguments" class="retro-btn-pill" onclick="copyPrompt(4, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
+</div>
+</div>
+</div>
+<!-- 3.5 Intelligence critique -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">05</span>
+<span class="acc-title" data-i18n="acc5-title">Intelligence critique et curation</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc5-desc">L'intelligence critique appliquée à l'éducation consiste à examiner
                 systématiquement les présupposés, les preuves et les limites des affirmations pédagogiques — y compris
                 celles qu'on tient soi-même pour évidentes. Elle s'appuie sur le fact-checking, la diversification des
                 sources et l'examen contradictoire. Dans un contexte de surinformation, cette posture est d'autant plus
                 nécessaire que les « idées reçues pédagogiques » circulent avec la force des évidences : les styles
                 d'apprentissage, la pyramide de Dale, le « on retient 10% de ce qu'on lit » — autant de croyances
                 persistantes que la recherche a fortement nuancées ou invalidées.</p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-5"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(5, this)"
-                  aria-label="Copier le prompt Intelligence critique">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3.6 QQOQPC -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">06</span>
-              <span class="acc-title" data-i18n="acc6-title">QQOQPC</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc6-desc">Le QQOQPC (Qui, Quoi, Où, Quand, Pourquoi, Comment) est une grille d'analyse
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-5"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt Intelligence critique" class="retro-btn-pill" onclick="copyPrompt(5, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
+</div>
+</div>
+</div>
+<!-- 3.6 QQOQPC -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">06</span>
+<span class="acc-title" data-i18n="acc6-title">QQOQPC</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc6-desc">Le QQOQPC (Qui, Quoi, Où, Quand, Pourquoi, Comment) est une grille d'analyse
                 systématique utilisée pour cerner les contours d'un problème avant de chercher des solutions. Son
                 efficacité vient de son exhaustivité mécanique : en forçant le passage par chaque question, elle empêche
                 de sauter directement aux conclusions. En contexte pédagogique, elle est souvent employée pour clarifier
                 un brief de formation ou analyser une situation d'apprentissage complexe. Sa limite habituelle :
                 appliquée depuis un seul point de vue, elle ne produit qu'une seule lecture du problème.</p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-6"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(6, this)" aria-label="Copier le prompt QQOQPC">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3.7 Arbres de Connaissances -->
-          <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)" role="button" aria-expanded="false">
-              <span class="acc-num">07</span>
-              <span class="acc-title" data-i18n="acc7-title">Arbres de Connaissances</span>
-              <span class="acc-chevron">▼</span>
-            </div>
-            <div class="accordion-body">
-              <span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
-              <p class="technique-desc" data-i18n="acc7-desc">Théorisés par Michel Authier et Pierre Lévy (1992), les Arbres de Connaissances
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-6"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt QQOQPC" class="retro-btn-pill" onclick="copyPrompt(6, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
+</div>
+</div>
+</div>
+<!-- 3.7 Arbres de Connaissances -->
+<div class="accordion-item">
+<div aria-expanded="false" class="accordion-header" onclick="toggleAccordion(this)" role="button">
+<span class="acc-num">07</span>
+<span class="acc-title" data-i18n="acc7-title">Arbres de Connaissances</span>
+<span class="acc-chevron">▼</span>
+</div>
+<div class="accordion-body">
+<span class="technique-tag" data-i18n="technique-tag">La technique classique</span>
+<p class="technique-desc" data-i18n="acc7-desc">Théorisés par Michel Authier et Pierre Lévy (1992), les Arbres de Connaissances
                 sont un système de cartographie dynamique et non hiérarchique des savoirs d'une communauté. Chaque
                 individu possède un « blason » (la mosaïque de ses compétences validées sous forme de « brevets »), et
                 l'arbre collectif visualise la distribution des savoirs du groupe : tronc commun, branches spécialisées,
                 compétences rares. L'idée fondatrice est que tout savoir a de la valeur — y compris ceux que
                 l'institution ne reconnaît pas — et que rendre visible la carte des savoirs d'un groupe transforme la
                 façon dont ce groupe apprend et s'organise.</p>
-              <div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
-              <div class="prompt-block" id="pt-7"></div>
-              <div class="copy-row">
-                <button class="retro-btn-pill" onclick="copyPrompt(7, this)"
-                  aria-label="Copier le prompt Arbres de Connaissances">
-                  <span class="label" data-i18n="copy-btn">Copier le prompt</span>
-                  <span class="icon">⧉</span>
-                </button>
-                <span class="copy-feedback" data-i18n="copy-feedback" aria-live="polite">Copié ✓</span>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /accordion -->
-      </section>
-
-      <footer>
-        <p data-i18n="footer-text">Document produit dans le cadre de l'atelier « Prompt créatif et intelligence collective » — avril 2026.</p>
-      </footer>
-
-    </div><!-- /page-frame -->
-  <div class="ab-attribution" style="text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(128,128,128,0.25);font-size:0.8rem;opacity:0.65;">
-  <a href="https://www.linkedin.com/in/antonin-bareau/" target="_blank" rel="noopener" style="font-weight:bold;color:inherit;text-decoration:none;">Antonin Bareau</a>
-  &nbsp;&mdash;&nbsp;
-  <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Licence CC BY-SA 4.0</a>
+<div class="prompt-label" data-i18n="prompt-label">▶ Le prompt divergent</div>
+<div class="prompt-block" id="pt-7"></div>
+<div class="copy-row">
+<button aria-label="Copier le prompt Arbres de Connaissances" class="retro-btn-pill" onclick="copyPrompt(7, this)">
+<span class="label" data-i18n="copy-btn">Copier le prompt</span>
+<span class="icon">⧉</span>
+</button>
+<span aria-live="polite" class="copy-feedback" data-i18n="copy-feedback">Copié ✓</span>
 </div>
+</div>
+</div>
+</div><!-- /accordion -->
+</section>
+<footer>
+<p data-i18n="footer-text">Document produit dans le cadre de l'atelier « Prompt créatif et intelligence collective » — avril 2026.</p>
+</footer>
+<div class="ab-attribution" style="text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(128,128,128,0.25);font-size:0.8rem;opacity:0.65;">
+<a href="https://www.linkedin.com/in/antonin-bareau/" rel="noopener" style="font-weight:bold;color:inherit;text-decoration:none;" target="_blank">Antonin Bareau</a>
+   — 
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener" style="color:inherit;text-decoration:none;" target="_blank">Licence CC BY-SA 4.0</a>
+</div></div><!-- /page-frame -->
 </div><!-- /page-wrapper -->
-
-  <script>
+<script>
     // ===== LANGUAGE STATE =====
     let currentLang = 'fr';
 
@@ -1643,7 +1589,5 @@ beyond its stated objectives?`
     document.getElementById('globalContext').addEventListener('input', renderAll);
     renderAll();
   </script>
-
 </body>
-
 </html>
